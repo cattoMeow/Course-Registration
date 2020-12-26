@@ -19,6 +19,7 @@ public class CourseRegistration {
         System.out.println("Hello World");
         System.out.println("Pe");
         System.out.println("W");
+        System.out.println("Hello World");
     }
     
 }
