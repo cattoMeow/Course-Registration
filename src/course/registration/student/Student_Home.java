@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package course.registration.studend;
+package course.registration.student;
 
 import course.registration.Login_Page;
 import course.registration.Login_Session;
@@ -52,9 +52,9 @@ public class Student_Home extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Studend Home");
+        jLabel2.setText("Student Home");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/course/registration/studend/krs.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/course/registration/student/krs.png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

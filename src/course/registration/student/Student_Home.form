@@ -88,13 +88,13 @@
           <Font name="Segoe UI" size="36" style="3"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Studend Home"/>
+        <Property name="text" type="java.lang.String" value="Student Home"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/course/registration/studend/krs.png"/>
+          <Image iconType="3" name="/course/registration/student/krs.png"/>
         </Property>
       </Properties>
     </Component>

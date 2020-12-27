@@ -5,7 +5,7 @@
  */
 package course.registration;
 
-import course.registration.studend.Student_Home;
+import course.registration.student.Student_Home;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
