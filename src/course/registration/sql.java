@@ -22,7 +22,7 @@ public class sql {
         String hostUsername = "root";
         String hostPassword = "";
         
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Class.forName("com.mysql.jdbc.Driver");
         Connection myConn = (Connection)DriverManager.getConnection(dbUrl, hostUsername, hostPassword);
         return myConn;
     }
