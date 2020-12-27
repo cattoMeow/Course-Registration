@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2020 at 06:33 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.28
+-- Generation Time: Dec 27, 2020 at 04:57 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -31,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `antireq1` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -42,7 +41,7 @@ CREATE TABLE `antireq1` (
 CREATE TABLE `antireq2` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -53,7 +52,7 @@ CREATE TABLE `antireq2` (
 CREATE TABLE `antireq3` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -64,7 +63,7 @@ CREATE TABLE `antireq3` (
 CREATE TABLE `antireq4` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -78,6 +77,21 @@ CREATE TABLE `course` (
   `DESCR` char(150) NOT NULL,
   `CLASSROOM` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`DESIG`, `TITLE`, `DESCR`, `CLASSROOM`) VALUES
+('IF111', 'Dasar Pemrograman', 'mata kuliah dasar tentang pemgrograman dasar dengan bahasa pemrograman C++', 'L404'),
+('IF112', 'Pemrograman Berbasis Objek', 'Pemrograman berorientasi objek merupakan paradigma pemrograman berdasarkan konsep objek, yang dapat berisi data, dalam bentuk field atau dikenal juga', 'L401'),
+('IF113', 'Algorithma Dan Struktur Data', 'mata kuliah tentang algoritma dasar', 'L403'),
+('IF121', 'Sistem Operasi', 'mata kuliah tentang pembahasan sistem operasi', 'L402'),
+('IF122', 'Analisis Algorithma', 'mata kuliah tentang algoritma', 'L405'),
+('IF211', 'Manajemen Data dan Infomasi', 'mata kuliah tentang manajemene data dan informasi database', 'L501'),
+('IF212', 'Sistem Jaringan Komputer', 'mata kuliah tentang jaringan komputer', 'L502'),
+('IF221', 'Rekayasa Perangkat Lunak', 'mata kuliah RPL', 'L503'),
+('IF222', 'Pengembangan Teknologi Web', 'mata kuliah tentang membuat website', 'L504');
 
 -- --------------------------------------------------------
 
@@ -209,6 +223,17 @@ CREATE TABLE `person` (
   `NAME` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `person`
+--
+
+INSERT INTO `person` (`ID`, `NAME`) VALUES
+('P000001', 'safri'),
+('P000002', 'nabil'),
+('P000003', 'imron'),
+('P000004', 'rifki'),
+('P000005', 'anggi');
+
 -- --------------------------------------------------------
 
 --
@@ -229,7 +254,7 @@ CREATE TABLE `prereq11` (
 CREATE TABLE `prereq12` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -240,7 +265,7 @@ CREATE TABLE `prereq12` (
 CREATE TABLE `prereq13` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -251,7 +276,7 @@ CREATE TABLE `prereq13` (
 CREATE TABLE `prereq14` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -262,7 +287,7 @@ CREATE TABLE `prereq14` (
 CREATE TABLE `prereq22` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -273,7 +298,7 @@ CREATE TABLE `prereq22` (
 CREATE TABLE `prereq23` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -284,7 +309,7 @@ CREATE TABLE `prereq23` (
 CREATE TABLE `prereq24` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -295,7 +320,7 @@ CREATE TABLE `prereq24` (
 CREATE TABLE `prereq33` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -306,7 +331,7 @@ CREATE TABLE `prereq33` (
 CREATE TABLE `prereq34` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -317,7 +342,7 @@ CREATE TABLE `prereq34` (
 CREATE TABLE `prereq44` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -333,6 +358,13 @@ CREATE TABLE `staff` (
   `EMAIL` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`ID`, `DEPT`, `ROOM`, `EXTENSION`, `EMAIL`) VALUES
+('P000005', 'IFR', 'IF005', '61285', 'rifki@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -343,6 +375,15 @@ CREATE TABLE `student` (
   `ID` char(7) NOT NULL,
   `YEAR` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`ID`, `YEAR`) VALUES
+('P000001', 1),
+('P000002', 1),
+('P000003', 1);
 
 -- --------------------------------------------------------
 
@@ -375,6 +416,14 @@ CREATE TABLE `tutorial` (
 CREATE TABLE `y1course` (
   `DESIG` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `y1course`
+--
+
+INSERT INTO `y1course` (`DESIG`) VALUES
+('IF111'),
+('IF112');
 
 -- --------------------------------------------------------
 
@@ -699,29 +748,29 @@ ALTER TABLE `instructor`
 -- Constraints for table `l1`
 --
 ALTER TABLE `l1`
-  ADD CONSTRAINT `l1_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `student` (`ID`),
-  ADD CONSTRAINT `l1_ibfk_2` FOREIGN KEY (`DESIG`) REFERENCES `y1course` (`DESIG`);
+  ADD CONSTRAINT `l1_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `student` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `l1_ibfk_2` FOREIGN KEY (`DESIG`) REFERENCES `y1course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `l2`
 --
 ALTER TABLE `l2`
-  ADD CONSTRAINT `l2_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `student` (`ID`),
-  ADD CONSTRAINT `l2_ibfk_2` FOREIGN KEY (`DESIG`) REFERENCES `y2course` (`DESIG`);
+  ADD CONSTRAINT `l2_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `student` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `l2_ibfk_2` FOREIGN KEY (`DESIG`) REFERENCES `y2course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `l3`
 --
 ALTER TABLE `l3`
-  ADD CONSTRAINT `l3_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `student` (`ID`),
-  ADD CONSTRAINT `l3_ibfk_2` FOREIGN KEY (`DESIG`) REFERENCES `y3course` (`DESIG`);
+  ADD CONSTRAINT `l3_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `student` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `l3_ibfk_2` FOREIGN KEY (`DESIG`) REFERENCES `y3course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `l4`
 --
 ALTER TABLE `l4`
-  ADD CONSTRAINT `l4_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `student` (`ID`),
-  ADD CONSTRAINT `l4_ibfk_2` FOREIGN KEY (`DESIG`) REFERENCES `y4course` (`DESIG`);
+  ADD CONSTRAINT `l4_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `student` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `l4_ibfk_2` FOREIGN KEY (`DESIG`) REFERENCES `y4course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `la`
@@ -808,7 +857,7 @@ ALTER TABLE `staff`
 -- Constraints for table `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`);
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `ta`
@@ -821,6 +870,30 @@ ALTER TABLE `ta`
 --
 ALTER TABLE `tutorial`
   ADD CONSTRAINT `tutorial_ibfk_1` FOREIGN KEY (`DESIG`) REFERENCES `course` (`DESIG`);
+
+--
+-- Constraints for table `y1course`
+--
+ALTER TABLE `y1course`
+  ADD CONSTRAINT `y1_course` FOREIGN KEY (`DESIG`) REFERENCES `course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `y2course`
+--
+ALTER TABLE `y2course`
+  ADD CONSTRAINT `y2_course` FOREIGN KEY (`DESIG`) REFERENCES `course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `y3course`
+--
+ALTER TABLE `y3course`
+  ADD CONSTRAINT `y3_course` FOREIGN KEY (`DESIG`) REFERENCES `course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `y4course`
+--
+ALTER TABLE `y4course`
+  ADD CONSTRAINT `y4_course` FOREIGN KEY (`DESIG`) REFERENCES `course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
