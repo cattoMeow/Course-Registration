@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2020 at 02:16 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: Dec 28, 2020 at 03:28 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -151,7 +152,7 @@ CREATE TABLE `instructor` (
 CREATE TABLE `l1` (
   `ID` char(7) NOT NULL,
   `DESIG` char(5) NOT NULL,
-  `STATUS` char(1) NOT NULL CHECK (`STATUS` in ('P','F','R'))
+  `STATUS` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -171,7 +172,7 @@ INSERT INTO `l1` (`ID`, `DESIG`, `STATUS`) VALUES
 CREATE TABLE `l2` (
   `ID` char(7) NOT NULL,
   `DESIG` char(5) NOT NULL,
-  `STATUS` char(1) NOT NULL CHECK (`STATUS` in ('P','F','R'))
+  `STATUS` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -192,7 +193,7 @@ INSERT INTO `l2` (`ID`, `DESIG`, `STATUS`) VALUES
 CREATE TABLE `l3` (
   `ID` char(7) NOT NULL,
   `DESIG` char(5) NOT NULL,
-  `STATUS` char(1) NOT NULL CHECK (`STATUS` in ('P','F','R'))
+  `STATUS` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -204,7 +205,7 @@ CREATE TABLE `l3` (
 CREATE TABLE `l4` (
   `ID` char(7) NOT NULL,
   `DESIG` char(5) NOT NULL,
-  `STATUS` char(1) NOT NULL CHECK (`STATUS` in ('P','F','R'))
+  `STATUS` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -723,56 +724,56 @@ ALTER TABLE `y4course`
 -- Constraints for table `antireq1`
 --
 ALTER TABLE `antireq1`
-  ADD CONSTRAINT `antireq1_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y1course` (`DESIG`),
-  ADD CONSTRAINT `antireq1_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y1course` (`DESIG`);
+  ADD CONSTRAINT `antireq1_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y1course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `antireq1_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y1course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `antireq2`
 --
 ALTER TABLE `antireq2`
-  ADD CONSTRAINT `antireq2_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y2course` (`DESIG`),
-  ADD CONSTRAINT `antireq2_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y2course` (`DESIG`);
+  ADD CONSTRAINT `antireq2_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y2course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `antireq2_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y2course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `antireq3`
 --
 ALTER TABLE `antireq3`
-  ADD CONSTRAINT `antireq3_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y3course` (`DESIG`),
-  ADD CONSTRAINT `antireq3_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y3course` (`DESIG`);
+  ADD CONSTRAINT `antireq3_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y3course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `antireq3_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y3course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `antireq4`
 --
 ALTER TABLE `antireq4`
-  ADD CONSTRAINT `antireq4_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y4course` (`DESIG`),
-  ADD CONSTRAINT `antireq4_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y4course` (`DESIG`);
+  ADD CONSTRAINT `antireq4_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y4course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `antireq4_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y4course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `hasi`
 --
 ALTER TABLE `hasi`
-  ADD CONSTRAINT `hasi_ibfk_1` FOREIGN KEY (`DESIG`) REFERENCES `course` (`DESIG`),
-  ADD CONSTRAINT `hasi_ibfk_2` FOREIGN KEY (`ID`) REFERENCES `instructor` (`ID`);
+  ADD CONSTRAINT `hasi_ibfk_1` FOREIGN KEY (`DESIG`) REFERENCES `course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hasi_ibfk_2` FOREIGN KEY (`ID`) REFERENCES `instructor` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `hasla`
 --
 ALTER TABLE `hasla`
-  ADD CONSTRAINT `hasla_ibfk_1` FOREIGN KEY (`DESIG`,`SECTION`) REFERENCES `lab` (`DESIG`, `SECTION`),
-  ADD CONSTRAINT `hasla_ibfk_2` FOREIGN KEY (`ID`) REFERENCES `la` (`ID`);
+  ADD CONSTRAINT `hasla_ibfk_1` FOREIGN KEY (`DESIG`,`SECTION`) REFERENCES `lab` (`DESIG`, `SECTION`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hasla_ibfk_2` FOREIGN KEY (`ID`) REFERENCES `la` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `hasta`
 --
 ALTER TABLE `hasta`
-  ADD CONSTRAINT `hasta_ibfk_1` FOREIGN KEY (`DESIG`,`SECTION`) REFERENCES `tutorial` (`DESIG`, `SECTION`),
-  ADD CONSTRAINT `hasta_ibfk_2` FOREIGN KEY (`ID`) REFERENCES `ta` (`ID`);
+  ADD CONSTRAINT `hasta_ibfk_1` FOREIGN KEY (`DESIG`,`SECTION`) REFERENCES `tutorial` (`DESIG`, `SECTION`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hasta_ibfk_2` FOREIGN KEY (`ID`) REFERENCES `ta` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `instructor`
 --
 ALTER TABLE `instructor`
-  ADD CONSTRAINT `instructor_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`);
+  ADD CONSTRAINT `instructor_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `l1`
@@ -806,82 +807,82 @@ ALTER TABLE `l4`
 -- Constraints for table `la`
 --
 ALTER TABLE `la`
-  ADD CONSTRAINT `la_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `staff` (`ID`);
+  ADD CONSTRAINT `la_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `staff` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `lab`
 --
 ALTER TABLE `lab`
-  ADD CONSTRAINT `lab_ibfk_1` FOREIGN KEY (`DESIG`) REFERENCES `course` (`DESIG`);
+  ADD CONSTRAINT `lab_ibfk_1` FOREIGN KEY (`DESIG`) REFERENCES `course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `prereq12`
 --
 ALTER TABLE `prereq12`
-  ADD CONSTRAINT `prereq12_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y1course` (`DESIG`),
-  ADD CONSTRAINT `prereq12_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y2course` (`DESIG`);
+  ADD CONSTRAINT `prereq12_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y1course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prereq12_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y2course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `prereq13`
 --
 ALTER TABLE `prereq13`
-  ADD CONSTRAINT `prereq13_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y1course` (`DESIG`),
-  ADD CONSTRAINT `prereq13_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y3course` (`DESIG`);
+  ADD CONSTRAINT `prereq13_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y1course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prereq13_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y3course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `prereq14`
 --
 ALTER TABLE `prereq14`
-  ADD CONSTRAINT `prereq14_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y1course` (`DESIG`),
-  ADD CONSTRAINT `prereq14_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y4course` (`DESIG`);
+  ADD CONSTRAINT `prereq14_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y1course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prereq14_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y4course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `prereq22`
 --
 ALTER TABLE `prereq22`
-  ADD CONSTRAINT `prereq22_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y2course` (`DESIG`),
-  ADD CONSTRAINT `prereq22_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y2course` (`DESIG`);
+  ADD CONSTRAINT `prereq22_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y2course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prereq22_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y2course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `prereq23`
 --
 ALTER TABLE `prereq23`
-  ADD CONSTRAINT `prereq23_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y2course` (`DESIG`),
-  ADD CONSTRAINT `prereq23_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y3course` (`DESIG`);
+  ADD CONSTRAINT `prereq23_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y2course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prereq23_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y3course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `prereq24`
 --
 ALTER TABLE `prereq24`
-  ADD CONSTRAINT `prereq24_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y2course` (`DESIG`),
-  ADD CONSTRAINT `prereq24_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y4course` (`DESIG`);
+  ADD CONSTRAINT `prereq24_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y2course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prereq24_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y4course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `prereq33`
 --
 ALTER TABLE `prereq33`
-  ADD CONSTRAINT `prereq33_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y3course` (`DESIG`),
-  ADD CONSTRAINT `prereq33_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y3course` (`DESIG`);
+  ADD CONSTRAINT `prereq33_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y3course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prereq33_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y3course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `prereq34`
 --
 ALTER TABLE `prereq34`
-  ADD CONSTRAINT `prereq34_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y3course` (`DESIG`),
-  ADD CONSTRAINT `prereq34_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y4course` (`DESIG`);
+  ADD CONSTRAINT `prereq34_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y3course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prereq34_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y4course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `prereq44`
 --
 ALTER TABLE `prereq44`
-  ADD CONSTRAINT `prereq44_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y4course` (`DESIG`),
-  ADD CONSTRAINT `prereq44_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y4course` (`DESIG`);
+  ADD CONSTRAINT `prereq44_ibfk_1` FOREIGN KEY (`DESIG1`) REFERENCES `y4course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prereq44_ibfk_2` FOREIGN KEY (`DESIG2`) REFERENCES `y4course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `staff`
 --
 ALTER TABLE `staff`
-  ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`);
+  ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `person` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `student`
@@ -893,13 +894,13 @@ ALTER TABLE `student`
 -- Constraints for table `ta`
 --
 ALTER TABLE `ta`
-  ADD CONSTRAINT `ta_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `staff` (`ID`);
+  ADD CONSTRAINT `ta_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `staff` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tutorial`
 --
 ALTER TABLE `tutorial`
-  ADD CONSTRAINT `tutorial_ibfk_1` FOREIGN KEY (`DESIG`) REFERENCES `course` (`DESIG`);
+  ADD CONSTRAINT `tutorial_ibfk_1` FOREIGN KEY (`DESIG`) REFERENCES `course` (`DESIG`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `y1course`
