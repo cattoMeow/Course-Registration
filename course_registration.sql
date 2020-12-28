@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2020 at 04:57 PM
+-- Generation Time: Dec 28, 2020 at 02:16 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -154,6 +154,14 @@ CREATE TABLE `l1` (
   `STATUS` char(1) NOT NULL CHECK (`STATUS` in ('P','F','R'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `l1`
+--
+
+INSERT INTO `l1` (`ID`, `DESIG`, `STATUS`) VALUES
+('P000001', 'IF112', 'R'),
+('P000001', 'IF113', 'R');
+
 -- --------------------------------------------------------
 
 --
@@ -165,6 +173,15 @@ CREATE TABLE `l2` (
   `DESIG` char(5) NOT NULL,
   `STATUS` char(1) NOT NULL CHECK (`STATUS` in ('P','F','R'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `l2`
+--
+
+INSERT INTO `l2` (`ID`, `DESIG`, `STATUS`) VALUES
+('P000001', 'IF211', 'R'),
+('P000001', 'IF221', 'R'),
+('P000001', 'IF222', 'R');
 
 -- --------------------------------------------------------
 
@@ -382,8 +399,8 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`ID`, `YEAR`) VALUES
 ('P000001', 1),
-('P000002', 1),
-('P000003', 1);
+('P000002', 2),
+('P000003', 3);
 
 -- --------------------------------------------------------
 
@@ -423,7 +440,10 @@ CREATE TABLE `y1course` (
 
 INSERT INTO `y1course` (`DESIG`) VALUES
 ('IF111'),
-('IF112');
+('IF112'),
+('IF113'),
+('IF121'),
+('IF122');
 
 -- --------------------------------------------------------
 
@@ -434,6 +454,16 @@ INSERT INTO `y1course` (`DESIG`) VALUES
 CREATE TABLE `y2course` (
   `DESIG` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `y2course`
+--
+
+INSERT INTO `y2course` (`DESIG`) VALUES
+('IF211'),
+('IF212'),
+('IF221'),
+('IF222');
 
 -- --------------------------------------------------------
 

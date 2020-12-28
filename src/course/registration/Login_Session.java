@@ -13,4 +13,5 @@ public class Login_Session {
     public static String personID; //menyimpan person id
     public static boolean isLoggedIn = false; //cek apakah user login
     public static String Nama; //menyimpan nama
+    public static String studentYear; //menyimpan student year
 }
