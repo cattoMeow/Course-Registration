@@ -8,6 +8,7 @@ package course.registration.student;
 import course.registration.Login_Session;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -65,6 +66,8 @@ public class Student_courseRegist extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTextField_courseYear = new javax.swing.JTextField();
+        jButton_antireqCheck = new javax.swing.JButton();
+        jButton_prereqCheck = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -172,6 +175,20 @@ public class Student_courseRegist extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Year");
 
+        jButton_antireqCheck.setText("Antireq Find");
+        jButton_antireqCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_antireqCheckActionPerformed(evt);
+            }
+        });
+
+        jButton_prereqCheck.setText("Prereq Find");
+        jButton_prereqCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_prereqCheckActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -223,16 +240,20 @@ public class Student_courseRegist extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
+                        .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(127, 127, 127)
                                 .addComponent(jButton_kurangCourse))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(jButton_tambahCourse)))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(jButton_tambahCourse)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton_antireqCheck)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton_prereqCheck)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -245,7 +266,9 @@ public class Student_courseRegist extends javax.swing.JFrame {
                     .addComponent(jLabel_bacc, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton_tambahCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton_tambahCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_antireqCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_prereqCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -307,13 +330,29 @@ public class Student_courseRegist extends javax.swing.JFrame {
         jTextField_courseYear.setText(jTable_courseList.getValueAt(baris, 4).toString());
         
         jButton_tambahCourse.setEnabled(true);
+        jButton_antireqCheck.setEnabled(true);
+        jButton_prereqCheck.setEnabled(true);
         jButton_kurangCourse.setEnabled(false);
     }//GEN-LAST:event_jTable_courseListMouseClicked
 
     private void jButton_tambahCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_tambahCourseActionPerformed
-        // TODO add your handling code here:
-        student.registerCourse_Insert(jTextField_courseYear.getText(),jTextField_courseID.getText(), this);
-        jTable_courseRegistered.setModel(student.getRegisteredCourse(Login_Session.studentYear, this));
+        while (true) {
+            if(student.prereqPASS(jTextField_courseID.getText(), this)){
+                
+                if (student.antireqPASS(jTextField_courseID.getText(), jTextField_courseYear.getText(), this)) {
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this , "Anda telah mengambil antireq course dari course "+jTextField_courseName.getText());
+                    break;
+                }
+            } else {
+                JOptionPane.showMessageDialog(this , "Anda belum menyelesaikan prereq course dari course "+jTextField_courseName.getText());
+                break;
+            }
+            student.registerCourse_Insert(jTextField_courseYear.getText(),jTextField_courseID.getText(), this);
+            jTable_courseRegistered.setModel(student.getRegisteredCourse(Login_Session.studentYear, this));
+            break;
+        }
     }//GEN-LAST:event_jButton_tambahCourseActionPerformed
 
     private void jTable_courseRegisteredMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_courseRegisteredMouseClicked
@@ -326,6 +365,8 @@ public class Student_courseRegist extends javax.swing.JFrame {
         jTextField_courseYear.setText(jTable_courseRegistered.getValueAt(baris, 4).toString());
         
         jButton_tambahCourse.setEnabled(false);
+        jButton_antireqCheck.setEnabled(false);
+        jButton_prereqCheck.setEnabled(false);
         jButton_kurangCourse.setEnabled(true);
     }//GEN-LAST:event_jTable_courseRegisteredMouseClicked
 
@@ -333,6 +374,24 @@ public class Student_courseRegist extends javax.swing.JFrame {
         student.registerCourse_delete(jTextField_courseYear.getText(), jTextField_courseID.getText(), this);
         jTable_courseRegistered.setModel(student.getRegisteredCourse(Login_Session.studentYear, this));
     }//GEN-LAST:event_jButton_kurangCourseActionPerformed
+
+    private void jButton_antireqCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_antireqCheckActionPerformed
+        String nameAntireq = student.getAntireqName(jTextField_courseID.getText(), jTextField_courseYear.getText(), this);
+        if (!"error".equals(nameAntireq)) {
+            JOptionPane.showMessageDialog(this, "Antireq course ini adalah : course "+nameAntireq);
+        } else {
+            JOptionPane.showMessageDialog(this, "Course ini tidak memiliki Antireq");
+        }
+    }//GEN-LAST:event_jButton_antireqCheckActionPerformed
+
+    private void jButton_prereqCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_prereqCheckActionPerformed
+        String namePrereq = student.getPrereqName(jTextField_courseID.getText(), jTextField_courseYear.getText(), this);
+        if (!"error".equals(namePrereq)) {
+            JOptionPane.showMessageDialog(this, "Antireq course ini adalah : course "+namePrereq);
+        } else {
+            JOptionPane.showMessageDialog(this, "Course ini tidak memiliki Prereq");
+        }
+    }//GEN-LAST:event_jButton_prereqCheckActionPerformed
 
     /**
      * @param args the command line arguments
@@ -371,7 +430,9 @@ public class Student_courseRegist extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_antireqCheck;
     private javax.swing.JButton jButton_kurangCourse;
+    private javax.swing.JButton jButton_prereqCheck;
     private javax.swing.JButton jButton_tambahCourse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

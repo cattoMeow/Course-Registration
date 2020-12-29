@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2020 at 03:28 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Generation Time: Dec 29, 2020 at 03:18 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -43,6 +42,13 @@ CREATE TABLE `antireq2` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `antireq2`
+--
+
+INSERT INTO `antireq2` (`DESIG1`, `DESIG2`) VALUES
+('IF201', 'IF204');
 
 -- --------------------------------------------------------
 
@@ -84,15 +90,29 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`DESIG`, `TITLE`, `DESCR`, `CLASSROOM`) VALUES
-('IF111', 'Dasar Pemrograman', 'mata kuliah dasar tentang pemgrograman dasar dengan bahasa pemrograman C++', 'L404'),
-('IF112', 'Pemrograman Berbasis Objek', 'Pemrograman berorientasi objek merupakan paradigma pemrograman berdasarkan konsep objek, yang dapat berisi data, dalam bentuk field atau dikenal juga', 'L401'),
-('IF113', 'Algorithma Dan Struktur Data', 'mata kuliah tentang algoritma dasar', 'L403'),
-('IF121', 'Sistem Operasi', 'mata kuliah tentang pembahasan sistem operasi', 'L402'),
-('IF122', 'Analisis Algorithma', 'mata kuliah tentang algoritma', 'L405'),
-('IF211', 'Manajemen Data dan Infomasi', 'mata kuliah tentang manajemene data dan informasi database', 'L501'),
-('IF212', 'Sistem Jaringan Komputer', 'mata kuliah tentang jaringan komputer', 'L502'),
-('IF221', 'Rekayasa Perangkat Lunak', 'mata kuliah RPL', 'L503'),
-('IF222', 'Pengembangan Teknologi Web', 'mata kuliah tentang membuat website', 'L504');
+('IF101', 'Algorithma Dan Struktur Data', '......', 'L102'),
+('IF102', 'Kalkulus', '......', 'L103'),
+('IF103', 'Dasar-Dasar Pemrograman', '.......', 'L105'),
+('IF111', 'Pemrograman Berorientasi Obyek', '......', 'L104'),
+('IF112', 'Sistem Digital', '......', 'L101'),
+('IF113', 'Analisis Algorithma', '.......', 'L105'),
+('IF201', 'Ilmu Sosial Budaya Dasar', '......', 'L201'),
+('IF202', 'Manajemen Data dan Informasi', '......', 'L202'),
+('IF203', 'Sistem Jaringan Komputer', '.......', 'L203'),
+('IF204', 'Pendidikan Patriotisme', '.......', 'L204'),
+('IF211', 'Rekayasa Perangkat Lunak', '......', 'L204'),
+('IF212', 'Pengembangan Teknologi Web', '......', 'L205'),
+('IF213', 'Aorkom', '.......', 'L206'),
+('IF214', 'Kecerdasan Buatan', '.......', 'L207'),
+('IF301', 'Pengembangan Teknologi Mobile', '......', 'L302'),
+('IF302', 'Komgraf', '......', 'L305'),
+('IF303', 'Pengembangan Sistem Cerdas', '.......', 'L306'),
+('IF311', 'Sistem Keamanan Komputer', '......', 'L307'),
+('IF312', 'Pengembangan Game', '......', 'L301'),
+('IF313', 'Komputasi Cerdas Berbasis Visi', '.......', 'L304'),
+('IF401', 'JKPL', '......', 'L402'),
+('IF402', 'MPPL', '......', 'L405'),
+('IF411', 'Pendidikan Pancasila', '.......', 'L406');
 
 -- --------------------------------------------------------
 
@@ -160,8 +180,9 @@ CREATE TABLE `l1` (
 --
 
 INSERT INTO `l1` (`ID`, `DESIG`, `STATUS`) VALUES
-('P000001', 'IF112', 'R'),
-('P000001', 'IF113', 'R');
+('P000001', 'IF103', 'P'),
+('P000001', 'IF111', 'P'),
+('P000001', 'IF113', 'F');
 
 -- --------------------------------------------------------
 
@@ -180,9 +201,7 @@ CREATE TABLE `l2` (
 --
 
 INSERT INTO `l2` (`ID`, `DESIG`, `STATUS`) VALUES
-('P000001', 'IF211', 'R'),
-('P000001', 'IF221', 'R'),
-('P000001', 'IF222', 'R');
+('P000001', 'IF214', 'P');
 
 -- --------------------------------------------------------
 
@@ -274,6 +293,13 @@ CREATE TABLE `prereq12` (
   `DESIG2` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `prereq12`
+--
+
+INSERT INTO `prereq12` (`DESIG1`, `DESIG2`) VALUES
+('IF103', 'IF211');
+
 -- --------------------------------------------------------
 
 --
@@ -317,6 +343,13 @@ CREATE TABLE `prereq23` (
   `DESIG1` char(5) NOT NULL,
   `DESIG2` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prereq23`
+--
+
+INSERT INTO `prereq23` (`DESIG1`, `DESIG2`) VALUES
+('IF214', 'IF303');
 
 -- --------------------------------------------------------
 
@@ -440,11 +473,12 @@ CREATE TABLE `y1course` (
 --
 
 INSERT INTO `y1course` (`DESIG`) VALUES
+('IF101'),
+('IF102'),
+('IF103'),
 ('IF111'),
 ('IF112'),
-('IF113'),
-('IF121'),
-('IF122');
+('IF113');
 
 -- --------------------------------------------------------
 
@@ -461,10 +495,14 @@ CREATE TABLE `y2course` (
 --
 
 INSERT INTO `y2course` (`DESIG`) VALUES
+('IF201'),
+('IF202'),
+('IF203'),
+('IF204'),
 ('IF211'),
 ('IF212'),
-('IF221'),
-('IF222');
+('IF213'),
+('IF214');
 
 -- --------------------------------------------------------
 
@@ -476,6 +514,18 @@ CREATE TABLE `y3course` (
   `DESIG` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `y3course`
+--
+
+INSERT INTO `y3course` (`DESIG`) VALUES
+('IF301'),
+('IF302'),
+('IF303'),
+('IF311'),
+('IF312'),
+('IF313');
+
 -- --------------------------------------------------------
 
 --
@@ -485,6 +535,15 @@ CREATE TABLE `y3course` (
 CREATE TABLE `y4course` (
   `DESIG` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `y4course`
+--
+
+INSERT INTO `y4course` (`DESIG`) VALUES
+('IF401'),
+('IF402'),
+('IF411');
 
 --
 -- Indexes for dumped tables
