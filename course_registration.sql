@@ -152,7 +152,7 @@ CREATE TABLE `instructor` (
 CREATE TABLE `l1` (
   `ID` char(7) NOT NULL,
   `DESIG` char(5) NOT NULL,
-  `STATUS` char(1) NOT NULL
+  `STATUS` char(1) NOT NULL CHECK (`STATUS` in ('P','F','R'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -172,7 +172,7 @@ INSERT INTO `l1` (`ID`, `DESIG`, `STATUS`) VALUES
 CREATE TABLE `l2` (
   `ID` char(7) NOT NULL,
   `DESIG` char(5) NOT NULL,
-  `STATUS` char(1) NOT NULL
+  `STATUS` char(1) NOT NULL CHECK (`STATUS` in ('P','F','R'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -193,7 +193,7 @@ INSERT INTO `l2` (`ID`, `DESIG`, `STATUS`) VALUES
 CREATE TABLE `l3` (
   `ID` char(7) NOT NULL,
   `DESIG` char(5) NOT NULL,
-  `STATUS` char(1) NOT NULL
+  `STATUS` char(1) NOT NULL CHECK (`STATUS` in ('P','F','R'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -205,7 +205,7 @@ CREATE TABLE `l3` (
 CREATE TABLE `l4` (
   `ID` char(7) NOT NULL,
   `DESIG` char(5) NOT NULL,
-  `STATUS` char(1) NOT NULL
+  `STATUS` char(1) NOT NULL CHECK (`STATUS` in ('P','F','R'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
