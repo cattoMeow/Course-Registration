@@ -5,6 +5,7 @@
  */
 package course.registration;
 
+import course.registration.instructor.Instructor_addCourse;
 import course.registration.student.Student_Home;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -62,7 +63,7 @@ public class Login_Page extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Login as");
 
-        jComboBox_loginAS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Staff", "Instructor", "LA", "TA" }));
+        jComboBox_loginAS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Instructor" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,10 +117,17 @@ public class Login_Page extends javax.swing.JFrame {
             String personID = jTextField_personID.getText();
             String typeLogin = jComboBox_loginAS.getSelectedItem().toString();
             if (auth.isLogin(personID, typeLogin, this)) {
-                new Student_Home().setVisible(true);
-                //auth.getName(Login_Session.personID, typeLogin, this);
-                this.dispose();
-            } else{
+                switch (jComboBox_loginAS.getSelectedItem().toString()) {
+                    case "Student":
+                        new Student_Home().setVisible(true);
+                        this.dispose();
+                        break;
+                    case "Instructor":
+                        new Instructor_addCourse().setVisible(true);
+                        this.dispose();
+                        break;
+                }
+            } else {
                 JOptionPane.showMessageDialog(this, "Person ID salah");
                 jTextField_personID.setText("");
                 jTextField_personID.requestFocus();

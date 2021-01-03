@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2020 at 03:18 PM
+-- Generation Time: Jan 03, 2021 at 12:43 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -48,7 +48,7 @@ CREATE TABLE `antireq2` (
 --
 
 INSERT INTO `antireq2` (`DESIG1`, `DESIG2`) VALUES
-('IF201', 'IF204');
+('IF213', 'IF212');
 
 -- --------------------------------------------------------
 
@@ -82,37 +82,42 @@ CREATE TABLE `course` (
   `DESIG` char(5) NOT NULL,
   `TITLE` char(30) NOT NULL,
   `DESCR` char(150) NOT NULL,
-  `CLASSROOM` char(5) NOT NULL
+  `CLASSROOM` char(5) NOT NULL,
+  `YEAR` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`DESIG`, `TITLE`, `DESCR`, `CLASSROOM`) VALUES
-('IF101', 'Algorithma Dan Struktur Data', '......', 'L102'),
-('IF102', 'Kalkulus', '......', 'L103'),
-('IF103', 'Dasar-Dasar Pemrograman', '.......', 'L105'),
-('IF111', 'Pemrograman Berorientasi Obyek', '......', 'L104'),
-('IF112', 'Sistem Digital', '......', 'L101'),
-('IF113', 'Analisis Algorithma', '.......', 'L105'),
-('IF201', 'Ilmu Sosial Budaya Dasar', '......', 'L201'),
-('IF202', 'Manajemen Data dan Informasi', '......', 'L202'),
-('IF203', 'Sistem Jaringan Komputer', '.......', 'L203'),
-('IF204', 'Pendidikan Patriotisme', '.......', 'L204'),
-('IF211', 'Rekayasa Perangkat Lunak', '......', 'L204'),
-('IF212', 'Pengembangan Teknologi Web', '......', 'L205'),
-('IF213', 'Aorkom', '.......', 'L206'),
-('IF214', 'Kecerdasan Buatan', '.......', 'L207'),
-('IF301', 'Pengembangan Teknologi Mobile', '......', 'L302'),
-('IF302', 'Komgraf', '......', 'L305'),
-('IF303', 'Pengembangan Sistem Cerdas', '.......', 'L306'),
-('IF311', 'Sistem Keamanan Komputer', '......', 'L307'),
-('IF312', 'Pengembangan Game', '......', 'L301'),
-('IF313', 'Komputasi Cerdas Berbasis Visi', '.......', 'L304'),
-('IF401', 'JKPL', '......', 'L402'),
-('IF402', 'MPPL', '......', 'L405'),
-('IF411', 'Pendidikan Pancasila', '.......', 'L406');
+INSERT INTO `course` (`DESIG`, `TITLE`, `DESCR`, `CLASSROOM`, `YEAR`) VALUES
+('IF101', 'Pemrograman Dasar', 'TEST', 'L111', '1'),
+('IF211', 'Kecerdasan Buatan', '....', 'L201', '2'),
+('IF212', 'ISBD', '....', 'L202', '2'),
+('IF213', 'Patriotisme', '....', 'L204', '2'),
+('IF301', 'Pengembangan Sistem Cerdas', '...', 'L301', '3');
+
+--
+-- Triggers `course`
+--
+DELIMITER $$
+CREATE TRIGGER `insert_yxCourse` AFTER INSERT ON `course` FOR EACH ROW BEGIN
+	IF NEW.YEAR = 1 THEN
+    	INSERT y1course
+        SET DESIG = NEW.DESIG;
+	ELSEIF NEW.YEAR = 2 THEN
+    	INSERT y2course
+        SET DESIG = NEW.DESIG;
+    ELSEIF NEW.YEAR = 3 THEN
+    	INSERT y3course
+        SET DESIG = NEW.DESIG;
+    ELSEIF NEW.YEAR = 4 THEN
+    	INSERT y4course
+        SET DESIG = NEW.DESIG;
+    END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -124,6 +129,17 @@ CREATE TABLE `hasi` (
   `DESIG` char(5) NOT NULL,
   `ID` char(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hasi`
+--
+
+INSERT INTO `hasi` (`DESIG`, `ID`) VALUES
+('IF101', 'P000004'),
+('IF212', 'P000004'),
+('IF213', 'P000004'),
+('IF211', 'P000005'),
+('IF301', 'P000005');
 
 -- --------------------------------------------------------
 
@@ -163,6 +179,14 @@ CREATE TABLE `instructor` (
   `EMAIL` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `instructor`
+--
+
+INSERT INTO `instructor` (`ID`, `DEPT`, `ROOM`, `EXTENSION`, `EMAIL`) VALUES
+('P000004', 'IFR', 'L399', '61999', 'rifki@gmail.com'),
+('P000005', 'IFR', 'L398', '61998', 'anggi@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -175,15 +199,6 @@ CREATE TABLE `l1` (
   `STATUS` char(1) NOT NULL CHECK (`STATUS` in ('P','F','R'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `l1`
---
-
-INSERT INTO `l1` (`ID`, `DESIG`, `STATUS`) VALUES
-('P000001', 'IF103', 'P'),
-('P000001', 'IF111', 'P'),
-('P000001', 'IF113', 'F');
-
 -- --------------------------------------------------------
 
 --
@@ -195,13 +210,6 @@ CREATE TABLE `l2` (
   `DESIG` char(5) NOT NULL,
   `STATUS` char(1) NOT NULL CHECK (`STATUS` in ('P','F','R'))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `l2`
---
-
-INSERT INTO `l2` (`ID`, `DESIG`, `STATUS`) VALUES
-('P000001', 'IF214', 'P');
 
 -- --------------------------------------------------------
 
@@ -293,13 +301,6 @@ CREATE TABLE `prereq12` (
   `DESIG2` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `prereq12`
---
-
-INSERT INTO `prereq12` (`DESIG1`, `DESIG2`) VALUES
-('IF103', 'IF211');
-
 -- --------------------------------------------------------
 
 --
@@ -349,7 +350,7 @@ CREATE TABLE `prereq23` (
 --
 
 INSERT INTO `prereq23` (`DESIG1`, `DESIG2`) VALUES
-('IF214', 'IF303');
+('IF211', 'IF301');
 
 -- --------------------------------------------------------
 
@@ -409,13 +410,6 @@ CREATE TABLE `staff` (
   `EMAIL` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `staff`
---
-
-INSERT INTO `staff` (`ID`, `DEPT`, `ROOM`, `EXTENSION`, `EMAIL`) VALUES
-('P000005', 'IFR', 'IF005', '61285', 'rifki@gmail.com');
-
 -- --------------------------------------------------------
 
 --
@@ -473,12 +467,7 @@ CREATE TABLE `y1course` (
 --
 
 INSERT INTO `y1course` (`DESIG`) VALUES
-('IF101'),
-('IF102'),
-('IF103'),
-('IF111'),
-('IF112'),
-('IF113');
+('IF101');
 
 -- --------------------------------------------------------
 
@@ -495,14 +484,9 @@ CREATE TABLE `y2course` (
 --
 
 INSERT INTO `y2course` (`DESIG`) VALUES
-('IF201'),
-('IF202'),
-('IF203'),
-('IF204'),
 ('IF211'),
 ('IF212'),
-('IF213'),
-('IF214');
+('IF213');
 
 -- --------------------------------------------------------
 
@@ -519,12 +503,7 @@ CREATE TABLE `y3course` (
 --
 
 INSERT INTO `y3course` (`DESIG`) VALUES
-('IF301'),
-('IF302'),
-('IF303'),
-('IF311'),
-('IF312'),
-('IF313');
+('IF301');
 
 -- --------------------------------------------------------
 
@@ -535,15 +514,6 @@ INSERT INTO `y3course` (`DESIG`) VALUES
 CREATE TABLE `y4course` (
   `DESIG` char(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `y4course`
---
-
-INSERT INTO `y4course` (`DESIG`) VALUES
-('IF401'),
-('IF402'),
-('IF411');
 
 --
 -- Indexes for dumped tables

@@ -63,33 +63,4 @@ public class auth {
         return false;
     }
 
-//    public static void getName(String personID, String typeLogin, JFrame frame) {
-//        try {
-//            String tabel = "";  
-//            switch (typeLogin){
-//                case "Student":
-//                    nama = "";
-//                    tabel = "student";
-//                    break;
-//                case "LA":
-//                    tabel = "ta";
-//                    break;
-//                case "TA":
-//                    tabel = "la";
-//                    break;    
-//            }
-//            Connection conn = sql.getConnection();
-//            
-//            String Query = 
-//                    "SELECT * FROM person WHERE ID = '"+personID+"'";
-//            PreparedStatement preparedStatement = conn.prepareStatement(Query);
-//            ResultSet rs = preparedStatement.executeQuery();
-//            
-//            while(rs.next()){
-//                Login_Session.Nama = rs.getString("ID");
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(frame, "Database error: " + e.getMessage());
-//        }
-//    }
 }
