@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -216,7 +215,7 @@ public class student {
             }
             
             Query = 
-                    "Select id From l"+year+" where desig = '"+ID_Prereq+"' and status = 'P'";
+                    "Select id From l"+year+" where desig = '"+ID_Prereq+"' and status = 'P' and id = '"+Login_Session.personID+"'";
             preparedStatement = conn.prepareStatement(Query);
             rs = preparedStatement.executeQuery();
             while (rs.next()) {

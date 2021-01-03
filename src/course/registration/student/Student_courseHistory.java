@@ -5,6 +5,7 @@
  */
 package course.registration.student;
 
+import course.registration.Login_Session;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -23,6 +24,9 @@ public class Student_courseHistory extends javax.swing.JFrame {
         Dimension frameSize = getSize();
         setLocation((screenSize.width - frameSize.width) / 2,(screenSize.height - frameSize.height) / 2);
         jTable1.setModel(student.getHistoryCourse(this));
+        
+        jLabel_studentName.setText("Student Name : "+Login_Session.Nama);
+        jLabel_studentYear.setText("Year : "+Login_Session.studentYear);
     }
 
     /**

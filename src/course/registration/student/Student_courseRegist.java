@@ -387,7 +387,7 @@ public class Student_courseRegist extends javax.swing.JFrame {
     private void jButton_prereqCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_prereqCheckActionPerformed
         String namePrereq = student.getPrereqName(jTextField_courseID.getText(), jTextField_courseYear.getText(), this);
         if (!"error".equals(namePrereq)) {
-            JOptionPane.showMessageDialog(this, "Antireq course ini adalah : course "+namePrereq);
+            JOptionPane.showMessageDialog(this, "Prereq course ini adalah : course "+namePrereq);
         } else {
             JOptionPane.showMessageDialog(this, "Course ini tidak memiliki Prereq");
         }
